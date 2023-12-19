@@ -29,8 +29,5 @@ func main() {
 			currentNumber = int64(newCunN)
 		}
 	}
-	fmt.Println(i)
-	fmt.Println(strconv.FormatInt(currentNumber, 2))
 	fmt.Println(currentNumber ^ int64(1)<<i)
-	fmt.Println(strconv.FormatInt(currentNumber^int64(1)<<i, 2))
 }
