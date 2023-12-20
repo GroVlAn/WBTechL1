@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	// останавливаем горутину с помощью системных сигналов, используя signal.NotifyContext
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
 
 	_ = cancel

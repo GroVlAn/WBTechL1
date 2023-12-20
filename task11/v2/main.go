@@ -6,6 +6,16 @@ import (
 	"time"
 )
 
+func exist(arr []int, n int) bool {
+	for _, item := range arr {
+		if item == n {
+			return true
+		}
+	}
+
+	return false
+}
+
 func main() {
 	n1 := 40
 	n2 := 40
@@ -25,8 +35,14 @@ func main() {
 		nums2 = append(nums2, random.Intn(400)+1)
 	}
 
+	// проходимся по всем значениям первого и второго массивов, если находим одинковые значения
+	// и если такого значение нет в результируещем массиве, добавляем значение в union
 	for _, n1 := range nums1 {
 		for _, n2 := range nums2 {
+			if exist(union, n1) {
+				continue
+			}
+
 			if n1 == n2 {
 				union = append(union, n1)
 			}

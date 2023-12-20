@@ -31,15 +31,21 @@ func quickSort(arr []int) []int {
 }
 
 func binarySearch(arr []int, n int) int {
+	// инициализируем правую и левую границу слайса
 	left := 0
 	right := len(arr) - 1
 
+	// пока левая граница меньше правой ищем элемент
 	for left <= right {
+		// индекс центрального элемента слайса
 		mid := (left + right) / 2
 
+		// если нашли, возвращаем индекс элемента
 		if arr[mid] == n {
 			return mid
 		}
+
+		// если центральный элемент меньше искомого сдвигаем левую часть, иначе сдвигаем правую
 		if arr[mid] < n {
 			left = mid + 1
 		} else {
@@ -47,6 +53,7 @@ func binarySearch(arr []int, n int) int {
 		}
 	}
 
+	// если не нашли, возвращаем -1
 	return -1
 }
 

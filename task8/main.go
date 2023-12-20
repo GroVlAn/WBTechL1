@@ -14,6 +14,8 @@ func main() {
 
 	args := os.Args
 
+	// читаем из аргументов номер байта, который нужно изменить, если его нет, или он больше 64,
+	//устанавливаем 0-ой номер
 	if len(args) > 1 {
 		iB, err := strconv.Atoi(args[1])
 		if err == nil {
@@ -29,5 +31,6 @@ func main() {
 			currentNumber = int64(newCunN)
 		}
 	}
+	// используем XOR для изменения байта на противоположный
 	fmt.Println(currentNumber ^ int64(1)<<i)
 }

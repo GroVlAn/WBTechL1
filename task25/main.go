@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// собственная функция sleep основанная на методе time.After
+// функция ожидает пока в канал <-to поступит значение, через second секунд, после чего выходит из функции
 func sleep(second int) {
 	to := time.After(time.Duration(second) * time.Second)
 	var wg sync.WaitGroup

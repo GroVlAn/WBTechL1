@@ -23,6 +23,7 @@ func NewSyncMap() *SyncMap {
 }
 
 func (sm *SyncMap) Set(key, val string) {
+	// блокируем одновременную запись в map нескольких горутин
 	sm.mx.Lock()
 	defer sm.mx.Unlock()
 
@@ -30,6 +31,7 @@ func (sm *SyncMap) Set(key, val string) {
 }
 
 func (sm *SyncMap) Value(key string) (string, string) {
+	// блокируем одновременное чтение нескольких горутин
 	sm.mx.RLock()
 	defer sm.mx.RUnlock()
 

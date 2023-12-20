@@ -17,6 +17,7 @@ func NewPoint(x, y float64) *Point {
 	}
 }
 
+// Distance - метод для нахождения расстояния между двумя точками
 func (p1 *Point) Distance(p2 *Point) float64 {
 	dx := p2.x - p1.x
 	dy := p2.y - p1.y

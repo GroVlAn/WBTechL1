@@ -7,6 +7,7 @@ import (
 
 func runner(stop <-chan bool) {
 	for {
+		// останавливаем горутину, если в канал <-stop постубити булевское значение
 		select {
 		default:
 			fmt.Println("working...")
@@ -23,6 +24,7 @@ func main() {
 
 	go runner(stop)
 
+	// Через 5 секунд записываем в канал stop - true для остановки горутины
 	time.Sleep(5 * time.Second)
 	stop <- true
 

@@ -7,6 +7,7 @@ func main() {
 	indexDel := 3
 
 	fmt.Println(arr)
+	// удаляем элемент из слайса
 	arr = append(arr[:indexDel], arr[indexDel+1:]...)
 
 	fmt.Println(arr)

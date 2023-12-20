@@ -13,9 +13,11 @@ import (
 func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
 	_ = cancel
+	// для блокировки одновременной записи и чтение нескольких горутин используем sync.Map
 	var sm sync.Map
 
 	for i := 0; i < 5; i++ {
+		// запускаем 5 горутин для записи и 5 горутин для чтения из map
 		go func() {
 			for j := 0; ; j++ {
 				source := rand.NewSource(time.Now().UnixNano())

@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Set - обёртка map для создания Set
 type Set struct {
 	val map[string]string
 }
@@ -12,6 +13,7 @@ func NewSet() *Set {
 	}
 }
 
+// Add - метод для добавления значения в множество
 func (s *Set) Add(str string) {
 	_, ok := s.val[str]
 
@@ -22,6 +24,14 @@ func (s *Set) Add(str string) {
 	s.val[str] = str
 }
 
+// Exist - метод для проверки существования элемента
+func (s *Set) Exist(str string) bool {
+	_, ok := s.val[str]
+
+	return ok
+}
+
+// All - метод для получения всех значений из множества
 func (s *Set) All() []string {
 	vals := make([]string, 0, len(s.val))
 

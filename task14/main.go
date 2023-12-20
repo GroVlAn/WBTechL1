@@ -8,6 +8,7 @@ import (
 func checkType(val interface{}) {
 	valType := reflect.TypeOf(val)
 
+	// для проверки типа в рантайме используем пакет reflect
 	switch valType.Kind() {
 	case reflect.Int:
 		fmt.Printf("%d is integer\n", val)

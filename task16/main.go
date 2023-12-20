@@ -8,9 +8,13 @@ func quickSort(arr []int) []int {
 	}
 
 	res := make([]int, 0)
+	// находим индекс опорного элемента, в данном случай центральный
 	mid := arr[len(arr)/2]
+	// два слайса, для хранения левой и правой части слайса
 	var less, greater []int
 
+	// заполняем правые и левые части массива
+	// в левую те что, меньше опорного, в правую, те что больше опорного
 	for i := 0; i < len(arr); i++ {
 		if i == len(arr)/2 {
 			continue
@@ -24,6 +28,7 @@ func quickSort(arr []int) []int {
 
 	}
 
+	// рекурсивно вызываем сортировку для левой и правой части и объединяем в результирующий слайс
 	res = append(quickSort(less), mid)
 	res = append(res, quickSort(greater)...)
 
