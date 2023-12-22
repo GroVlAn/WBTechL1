@@ -47,10 +47,10 @@ func main() {
 			for j := 0; ; j++ {
 				source := rand.NewSource(time.Now().UnixNano())
 				random := rand.New(source)
-				m := random.Intn(10) + 1
-				syncMap.Set(strconv.Itoa(j), fmt.Sprintf("var-%d", m))
+				randVal := random.Intn(10) + 1
+				syncMap.Set(strconv.Itoa(j), fmt.Sprintf("var-%d", randVal))
 				fmt.Printf("goroutine number %d set data: %s:%s \n",
-					i, strconv.Itoa(j), fmt.Sprintf("var-%d", m))
+					i, strconv.Itoa(j), fmt.Sprintf("var-%d", randVal))
 				time.Sleep(1 * time.Second)
 			}
 		}(i)
@@ -59,8 +59,8 @@ func main() {
 			for j := 0; ; j++ {
 				select {
 				case <-time.Tick(1 * time.Second):
-					k, v := syncMap.Value(strconv.Itoa(j))
-					fmt.Printf("\n\tresult goroutine №%d: %s: %s\n", i, k, v)
+					key, value := syncMap.Value(strconv.Itoa(j))
+					fmt.Printf("\n\tresult goroutine №%d: %s: %s\n", i, key, value)
 				}
 			}
 		}(i)

@@ -5,11 +5,11 @@ import (
 	"time"
 )
 
-const N = 5 * time.Second
+const delay = 5 * time.Second
 
 func main() {
 	// Ставим таймер, который вернёт значение в канал по истечению времени
-	to := time.After(N)
+	to := time.After(delay)
 	ch := make(chan int)
 	quit := make(chan bool)
 

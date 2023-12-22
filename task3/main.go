@@ -7,10 +7,10 @@ import (
 
 var sum int
 
-func plus(n int, mt *sync.Mutex) {
+func plus(n int, mutex *sync.Mutex) {
 	// Используем мютекс для ограничения записи нескольких горутин
-	mt.Lock()
-	defer mt.Unlock()
+	mutex.Lock()
+	defer mutex.Unlock()
 	sum += n
 }
 
@@ -19,7 +19,7 @@ func main() {
 	// 40% элементов - количество используемых горутин
 	n := len(nums) * 4 / 10
 	var wg sync.WaitGroup
-	var mt sync.Mutex
+	var mutex sync.Mutex
 	ch := make(chan int, len(nums))
 
 	wg.Add(n)
@@ -34,7 +34,7 @@ func main() {
 					return
 				}
 
-				plus(val, &mt)
+				plus(val, &mutex)
 			}
 		}()
 	}
